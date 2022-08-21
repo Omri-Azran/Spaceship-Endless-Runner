@@ -7,31 +7,40 @@ public class SpaceshipControls : MonoBehaviour
     [SerializeField] Transform LeftPosition, RightPosition;
     [SerializeField] float Speed = 10;
     [SerializeField] float RotationSpeed = 200;
-    Renderer _Renderer;
-
+    
     IEnumerator Start()
     {
-        _Renderer = GetComponent<Renderer>();
-
-        AudioManager.Instance.PlayOnStart();
-        while (_Renderer.enabled)
+        if (AudioManager.Instance)
+            AudioManager.Instance.PlayOnStart();
+        else
+            Debug.Log("No Audio Manager in the scene. Please start game from Main Menu");
+        while (true)
         {
 
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                AudioManager.Instance.PlayOnStrafe();
+                if (AudioManager.Instance)
+                    AudioManager.Instance.PlayOnStrafe();
+                else
+                    Debug.Log("No Audio Manager in the scene. Please start game from Main Menu");
                 transform.position = (Vector3.MoveTowards(transform.position, Direction(LeftPosition), Time.deltaTime * Speed));
                 transform.rotation = (Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, 30)), RotationSpeed * Time.deltaTime));
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                AudioManager.Instance.PlayOnStrafe();
+                if (AudioManager.Instance)
+                    AudioManager.Instance.PlayOnStrafe();
+                else
+                    Debug.Log("No Audio Manager in the scene. Please start game from Main Menu");
                 transform.position = (Vector3.MoveTowards(transform.position, Direction(RightPosition), Time.deltaTime * Speed));
                 transform.rotation = (Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, -30)), RotationSpeed * Time.deltaTime));
             }
             else
             {
-                AudioManager.Instance.CanPlayStrafeSound = true;
+                if (AudioManager.Instance)
+                    AudioManager.Instance.CanPlayStrafeSound = true;
+                else
+                    Debug.Log("No Audio Manager in the scene. Please start game from Main Menu");
                 transform.rotation = (Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(Vector3.zero), RotationSpeed * Time.deltaTime));
             }
             

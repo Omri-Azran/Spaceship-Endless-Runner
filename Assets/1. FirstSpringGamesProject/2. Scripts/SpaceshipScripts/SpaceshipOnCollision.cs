@@ -8,8 +8,10 @@ public class SpaceshipOnCollision : MonoBehaviour
     [SerializeField] GameObject PointWall;
     Renderer _Renderer;
     Collider SpaceshipCollider;
-    
-    
+    const int AsteroidsCollisionLayer = 6;
+
+    [SerializeField] EffectManager _EffectManager;
+    [SerializeField] SceneMover _SceneMover;
     private void Awake()
     {
         _Renderer = GetComponent<Renderer>();
@@ -18,22 +20,21 @@ public class SpaceshipOnCollision : MonoBehaviour
     //lose on collision with asteroid
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<AsteroidBehaviour>())
+        if (other.gameObject.layer==AsteroidsCollisionLayer)
         {
-            StartCoroutine(EndGame());
+            //StartCoroutine(EndGame());
+            EndGame();
         }
     }
     
-    IEnumerator EndGame()
+    void EndGame()
     {
-        AudioManager.Instance.PlayOnCollision();
-        SpaceshipCollider.enabled = false;
-        PointWall.SetActive(false);
-        FlameEffectChild.SetActive(false);
-        _Renderer.enabled = false;
-        ExplosionEffectChild.transform.parent = null;
-        ExplosionEffectChild.SetActive(true);
-        yield return new WaitForSeconds(ExplosionEffectChild.GetComponent<ParticleSystem>().main.duration);
-        SceneMover.MoveScene();
+        if (AudioManager.Instance)
+            AudioManager.Instance.PlayOnCollision();
+        else
+            Debug.Log("No Audio Manager in the scene. Please start game from Main Menu");
+        _EffectManager.CreateEffect(transform.position);        
+        _SceneMover.EndGameOnLoss();
+        Destroy(gameObject);
     }
 }

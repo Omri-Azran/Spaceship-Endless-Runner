@@ -1,62 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1093842127
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1093842132}
-  - component: {fileID: 1093842129}
-  - component: {fileID: 1093842128}
-  m_Layer: 0
-  m_Name: PointWall
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1093842132
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093842127}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.22999999, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 281110178495777992}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1093842129
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093842127}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.91, y: 9.3, z: 0.24}
-  m_Center: {x: 0, y: 3.1, z: 0}
---- !u!114 &1093842128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093842127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca7d43edff294941bafe9d1352bf536, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &948939097698480705
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +115,6 @@ Transform:
   m_Children:
   - {fileID: 948939097698480732}
   - {fileID: 2927432651294507095}
-  - {fileID: 1093842132}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -285,14 +227,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 281110178495777992}
     m_Modifications:
-    - target: {fileID: 797060857512255003, guid: b3c0a61dfe701344d819eb701e83f4b7, type: 3}
-      propertyPath: PointWall
-      value: 
-      objectReference: {fileID: 1093842127}
-    - target: {fileID: 797060857512255003, guid: b3c0a61dfe701344d819eb701e83f4b7, type: 3}
-      propertyPath: FlameEffectChild
-      value: 
-      objectReference: {fileID: 9188386068770985949}
     - target: {fileID: 2705286137011316497, guid: b3c0a61dfe701344d819eb701e83f4b7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -346,10 +280,5 @@ PrefabInstance:
 --- !u!4 &2927432651294507095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2705286137011316497, guid: b3c0a61dfe701344d819eb701e83f4b7, type: 3}
-  m_PrefabInstance: {fileID: 948939097971566406}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &9188386068770985949 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8262129933798420635, guid: b3c0a61dfe701344d819eb701e83f4b7, type: 3}
   m_PrefabInstance: {fileID: 948939097971566406}
   m_PrefabAsset: {fileID: 0}

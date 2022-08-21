@@ -4,17 +4,19 @@ using UnityEngine.SceneManagement;
 
 public class SceneMover : MonoBehaviour
 {
+    const string FirstScene = "Main_Menu";
+    const string LastScene = "Game_Over";
     private void Start()
     {
-        StartCoroutine(EndGame());
+        StartCoroutine(EndGameOnEsc());
     }
-    IEnumerator EndGame()
+    IEnumerator EndGameOnEsc()
     {
         while(true)
         {
             if(Input.GetKey(KeyCode.Escape))
             {
-                SceneManager.LoadScene("Game_Over");
+                SceneManager.LoadScene(LastScene);
             }
             yield return null;
         }
@@ -22,13 +24,24 @@ public class SceneMover : MonoBehaviour
     public static void MoveScene()
     {
         
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game_Over"))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName(LastScene))
         {
-            SceneManager.LoadScene("Main_Menu");
+            SceneManager.LoadScene(FirstScene);
         }
         else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+    }
+
+    public void EndGameOnLoss()
+    {
+        StartCoroutine(EndGameSequence(1));
+    }
+
+    IEnumerator EndGameSequence(float Seconds)
+    {
+        yield return new WaitForSeconds(Seconds);
+        SceneManager.LoadScene(LastScene);
     }
 }
